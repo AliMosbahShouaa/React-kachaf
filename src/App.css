@@ -1,0 +1,661 @@
+* {
+  font-family: self1;
+}
+
+.body {
+  background-color: #2f4f4f;
+  padding: 0;
+  margin: 0;
+}
+
+.home {
+  width: 35% !important;
+  background-color: white;
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.home .image {
+  text-align: center;
+}
+
+.home .login input {
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+}
+
+.home .login input[type="submit"] {
+  border-radius: 5px;
+  color: wheat;
+  border: none;
+}
+
+.error {
+  color: brown;
+}
+
+/*----------------------------------------------------------------------*/
+
+.home-page {
+  text-align: center;
+}
+
+.home-page .footer {
+  background-color: #2f4f4f;
+  margin-top: 215px;
+  padding: 25px 0;
+}
+
+.home-page .footer h4 {
+  color: white;
+  font-family: "self3";
+}
+
+.home-page img {
+  width: 150px;
+  height: 150px;
+}
+
+.home-page h3 {
+  color: #2f4f4f;
+  font-family: self2;
+
+}
+
+.list-dashboard ul {
+  padding-top: 30px;
+}
+
+.list-dashboard a,
+.list-dashboard a:focus,
+.list-dashboard a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.list-dashboard ul li:hover {
+  transition: 0.2s ease-in-out;
+  border-radius: 5px;
+
+}
+
+.list-dashboard ul li {
+  font-family: self2;
+  list-style: none;
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #2f4f4f;
+  margin: 0 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  /* font-weight: 600; */
+}
+
+/*----------------------------------------------------------------------*/
+.onsors h5 {
+  margin-top: 50px;
+  border: 2px solid black;
+  padding: 20px 15px;
+  border-radius: 30px;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+}
+
+.onsors-h4 {
+  color: white;
+  padding-top: 80px;
+  font-family: "self3";
+}
+
+.onsors {
+  background-color: #2f4f4f;
+  padding-bottom: 15px;
+}
+
+.onsors .form-select {
+  background-color: white;
+  color: #2f4f4f;
+  font-size: 14px;
+  font-family: self2;
+}
+
+.onsors img {
+  width: 250px;
+  height: 250px;
+}
+
+
+input[type=search],
+input[type=search]:focus {
+  width: 50%;
+  margin-right: 200px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  color: white;
+}
+
+ul.filter-search {
+  padding-top: 50px;
+  color: white
+}
+
+ul.filter-search span {
+  font-family: self2;
+}
+
+ul.filter-search li {
+  display: inline-block;
+  margin: 0 50px;
+  list-style: none;
+  color: white;
+}
+
+.list h4 {
+  background-color: rgb(31, 126, 31);
+  color: white;
+  padding: 13px 0;
+  text-align: center;
+  margin: 0;
+  font-family: self2;
+}
+
+.list {
+  margin-top: 50px;
+}
+
+tr a {
+  text-decoration: none;
+  color: #2f4f4f;
+  font-family: self2;
+}
+
+.list .table.table-striped {
+  background-color: white;
+}
+
+th.delete {
+  color: rgb(199, 62, 62) !important;
+  font-family: self2;
+  cursor: pointer;
+}
+
+td.show {
+  color: rgb(31, 126, 31);
+  font-family: self2;
+}
+
+input.serial,
+input.serial :focus {
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 20px;
+}
+
+/*----------------------------------------------------------------------*/
+.onsore-one h4 {
+  padding: 20px 0;
+}
+
+.onsore-one h2 {
+  padding: 10px 0;
+  color: black;
+  font-family: self2;
+}
+
+.onsore-one h3 {
+  background-color: rgb(31, 126, 31);
+  border-radius: 30px;
+  padding: 5px 0px;
+  color: white;
+}
+
+.onsore-one .field li {
+  font-family: self2;
+  list-style: none;
+  padding: 18px 0;
+}
+
+.onsore-one .field {
+  border-right: 3px dashed rgb(31, 126, 31);
+  padding-right: 60px;
+  padding-bottom: 30px;
+}
+
+.onsore-one .image-info {
+  padding-top: 110px
+}
+
+.onsore-one .field h2 {
+  color: white;
+  background-color: rgb(31, 126, 31);
+  font-size: 25px;
+  border-radius: 40px;
+}
+
+.onsore-one .field ul {
+  padding-top: 50px;
+}
+
+.onsore-one .field ul li span {
+  margin-right: 20px;
+  background-color: rgb(31, 126, 31);
+  color: white;
+  padding: 1px 15px 1px 80px;
+  border-radius: 20px;
+}
+
+.onsore-one .field .btn-edit {
+  background-color: brown;
+  color: white;
+  font-size: 10px;
+  margin-right: 30px;
+}
+
+/*----------------------------------------------------------------------*/
+.Header {
+  background-color: #2f4f4f;
+  height: 170px;
+}
+
+.Header h1 {
+  color: white;
+  padding-top: 50px;
+  font-family: self3;
+}
+
+.span-model {
+  color: white;
+  font-size: 18px;
+  background-color: rgb(145, 35, 35);
+  padding: 20px 0;
+  width: 100%;
+  margin: 0;
+  border: gray 1px solid;
+}
+
+.span-model:hover {
+  background-color: rgb(158, 52, 52);
+}
+
+.kadeh h4 {
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  background-color: #2f4f4f;
+  margin-top: 20px;
+  color: white;
+  font-family: self2;
+  position: relative;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+}
+
+.kadeh h4:hover {
+  background-color: #738181;
+}
+
+.kadeh .table.table-striped {
+  border: 1px solid #738181;
+  background-color: white;
+}
+
+.kadeh .table.table-striped td {
+  padding: 17px 0;
+}
+
+.kadeh {
+  background-color: rgb(31, 126, 31);
+  padding-bottom: 100px;
+}
+
+.not-found {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.kadeh .loading-kadeh {
+  padding: 100px 0;
+}
+
+.model-manag label,
+.model-manag option,
+.model-manag select {
+  font-family: self2;
+}
+
+.model-manag select {
+  padding: 10px;
+  background-color: #3b5757;
+  color: white;
+}
+
+.model-manag option {
+  background-color: #3b5757;
+  padding: 20px 30px;
+  color: white;
+}
+
+.model-manag input {
+  /* border: none;
+  border-bottom: 1px solid white; */
+  border-radius: 0;
+  background-color: #3b5757;
+  margin: 13px 0;
+  color: white;
+}
+
+.model-manag input:focus {
+  border: none;
+  border-bottom: 3px solid rgb(49, 153, 49);
+  transition: 0.3s ease-in-out;
+  background-color: #3b5757;
+  color: white;
+}
+
+input.disabled {
+  border: none !important;
+  width: 200px;
+}
+
+table.onsores th {
+  padding: 20px 10px !important;
+}
+table th {
+  padding: 5px 0  !important;
+}
+#table-wrapper {
+  position: relative;
+}
+
+#table-scroll {
+  height: 325px;
+  overflow: auto;
+}
+
+#table-wrapper table {
+  width: 100%;
+}
+
+#table-wrapper table thead th .text {
+  position: absolute;
+  top: -20px;
+  z-index: 2;
+  height: 20px;
+  width: 35%;
+  border: 1px solid red;
+}
+
+.kadeh tr img {
+  width: 30px;
+  height: 30px;
+}
+
+#modal-header-kadeh {
+  background-color: rgb(31, 126, 31);
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+#modal-body-kadeh {
+  background-color: #2f4f4f;
+  color: white;
+}
+
+.modal-body {
+  padding: 10px !important;
+}
+
+/*---------------------------------------------------------*/
+.talabat header {
+  background-color: #2f4f4f;
+  color: white;
+  padding: 40px 0;
+}
+
+.table-talabat thead th {
+  border-bottom: 2px solid black;
+}
+
+Button.add-button,
+Button.add-button:hover,
+Button.add-button:focus,
+Button.add-button:active {
+  background-color: rgb(31, 126, 31);
+  border-radius: 0;
+  width: 100%;
+  height: 195px;
+  border-color: #2f4f4f;
+}
+
+#collapse {
+  transition: 0.3s ease-in-out;
+}
+
+.info-add input {
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  margin: 0 30px;
+}
+
+.info-add #collapse .span-name {
+  background-color: rgb(221, 221, 221);
+  padding: 5px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.info-add #collapse .span-name .span-delete {
+  color: brown;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.info-add .footer {
+  background-color: #2f4f4f;
+  padding: 30px 0;
+  margin-top: 0px;
+}
+
+.info-add .footer h4 {
+  color: white;
+  font-family: "self3";
+}
+
+.info-add select.form-select {
+  display: inline-block;
+  margin-right: 30px
+}
+.img-kadeh {
+  width: 80px;
+  height: 70px;
+}
+
+@media(max-width:1024px) {
+  .model-manag select {
+    margin: 10px 0
+  }
+
+  .home {
+    width: 100% !important;
+    padding-top: 70px;
+  }
+
+  .list-dashboard ul {
+    padding-top: 20px !important;
+  }
+
+  .list-dashboard ul li {
+    display: block;
+    margin: 35px 0;
+    padding: 15px 40px;
+
+  }
+
+  .home-page {
+    padding-top: 40px;
+  }
+
+  .home-page .footer {
+    background-color: #2f4f4f;
+    margin-top: 90px;
+    padding: 25px 0;
+  }
+
+  .home-page h4 {
+    color: white;
+    font-family: "self3";
+  }
+
+  .onsors .image-onsor {
+    display: none;
+  }
+
+  .onsors h5 {
+    margin-top: 20px;
+    padding: 15px 10px;
+    border-radius: 0;
+    border: none;
+    color: white;
+    border-bottom: 2px solid white;
+    background-color: transparent;
+  }
+
+  ul.filter-search {
+    padding-top: 10px !important;
+    margin: 5px !important;
+  }
+
+  ul.filter-search li {
+    display: block;
+    margin: 20px 30px;
+    list-style: none;
+  }
+
+  input[type=search],
+  input[type=search]:focus {
+    width: 80%;
+    margin-right: 35px;
+
+  }
+
+  .onsors-h4 {
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .list tr {
+    font-size: 14px !important;
+  }
+
+  .onsore-one .image-info {
+    padding-top: 40px
+  }
+
+  .field h2 {
+    display: none
+  }
+
+  .onsore-one .field ul {
+    padding: 0;
+    padding-right: 5px !important;
+  }
+
+  .onsore-one .field ul li {
+    display: block;
+
+  }
+
+  .onsore-one .field {
+    padding-right: 0px;
+    padding-bottom: 20px;
+    border-right: none;
+    border-bottom: 2px dashed rgb(31, 126, 31);
+  }
+
+  .onsore-one .field ul li span {
+    margin-right: 0px;
+    background-color: transparent;
+    padding: 7px 5px;
+    border-radius: 20px;
+    color: rgb(31, 126, 31);
+    font-family: self2;
+  }
+
+  .onsore-one .image-info h2,
+  .onsore-one .image-info h3,
+  .onsore-one .image-info h4 {
+    padding: 10px 0 !important;
+  }
+
+  .onsore-one h3 {
+    background-color: rgb(31, 126, 31);
+    border-radius: 10px;
+    padding: 5px 0px;
+    margin-bottom: 10px !important;
+  }
+
+  .Header {
+    background-color: #2f4f4f;
+    height: 100px;
+  }
+
+  .Header h1 {
+    padding-top: 30px;
+    font-size: 18px !important;
+  }
+
+  .Header img {
+    width: 100%;
+  }
+
+  /* 
+  .span-model {
+    color: white;
+    font-size: 18px;
+    background-color: rgb(145, 35, 35);
+    padding: 5px 12px;
+    cursor: pointer;
+  } */
+
+  .kadeh h4 {
+    margin: 0 !important;
+    border-radius: 0px;
+  }
+
+  .model-manag div {
+    margin: 20px 0 !important;
+  }
+
+  input.disabled {
+    width: 100%;
+  }
+
+  .model-manag .col-4 {
+    margin: 0px !important;
+    padding: 0 5px !important;
+  }
+
+  .model-manag .col-md-6 {
+    margin: 0 !important;
+  }
+
+  .model-manag option,
+  .model-manag select {
+    font-size: 13px !important;
+  }
+
+  .model-manag .col-md-4 {
+    margin: 0 !important;
+  }
+}
