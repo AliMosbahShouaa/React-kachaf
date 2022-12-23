@@ -16,6 +16,13 @@ const Add = () => {
     const [fawj, setFawj] = useState([]);
     const [squad, setsquad] = useState([]);
     const [Error, setError] = useState('');
+    const [ErrorTwo, setErrorTwo] = useState('');
+
+    const [Status, setStatus] = useState('');
+    const [StatusTwo, setStatusTwo] = useState('');
+
+    const [Server, setServer] = useState('');
+
     const [idDelete, setIdDelete] = useState('');
     const [show, setShow] = useState(false);
     const [isDelete, setIsDelete] = useState(false);
@@ -24,15 +31,15 @@ const Add = () => {
 
     const [Fwj, setFwj] = useState('');
     const [Moufawadiyeh, setMoufawadiyeh] = useState('');
-    const [Squad, setSquad] = useState('');
     const [selectmfd, setSelectMfd] = useState('');
-    const [selectfwj, setSelectFwj] = useState('');
 
-    const handleMoufawad = (e) => setMoufawadiyeh(e.target.value);
+    const handleMoufawad = (e) => {
+        setMoufawadiyeh(e.target.value)
+        setError('')
+        setStatus('')
+    };
     const handelFwj = (e) => setFwj(e.target.value);
-    const handleSquad = (e) => setSquad(e.target.value);
     const handleSelectMfd = (e) => setSelectMfd(e.target.value);
-    const handleSelectFwj = (e) => setSelectFwj(e.target.value);
     const handleShow = (id, value) => {
         setShow(true);
         setIdDelete(id);
@@ -53,23 +60,37 @@ const Add = () => {
     }
 
     async function fetchMyMoufawad() {
-        let response = await fetch('http://localhost:8080/api/get-moufawadiyeh')
-        response = await response.json()
-        setmoufawadiyeh(response.moufawads)
+        await fetch('http://localhost:8080/api/get-moufawadiyeh')
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === ("success")) {
+                    setmoufawadiyeh(data.moufawads)
+                }
+
+            })
+
+            .catch((e) => {
+                setServer("هناك خطأ في النظام")
+            })
     }
     async function fetchMyFawj() {
-        let response = await fetch(`http://localhost:8080/api/get-fawj`)
-        response = await response.json()
-        setFawj(response.fawj)
-    }
-    // async function fetchMySquad() {
-    //     let response = await fetch('http://localhost:8080/api/get-squad')
-    //     response = await response.json()
-    //     setsquad(response.squad)
-    // }
-    useEffect(() => {
 
-        // fetchMySquad()
+        await fetch('http://localhost:8080/api/get-fawj')
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === ("success")) {
+                    setFawj(data.fawj)
+                }
+
+            })
+
+            .catch((e) => {
+                setServer("هناك خطأ في النظام..")
+            })
+    }
+
+
+    useEffect(() => {
         fetchMyMoufawad()
         fetchMyFawj()
     }, [])
@@ -83,11 +104,18 @@ const Add = () => {
         axios.post('http://localhost:8080/api/add-moufawadiyeh', data)
 
             .then(res => {
-                fetchMyMoufawad();
+
+                if (res.data.message === 'success') {
+                    setStatus("تمت العملية بنجاح")
+                    fetchMyMoufawad();
+                }
+                else {
+                    setError("لم تتم العملية!")
+                }
             })
 
             .catch(err => {
-                setError(err)
+                setError("لم تتم العملية!")
             })
 
     }
@@ -100,33 +128,23 @@ const Add = () => {
         }
         axios.post('http://localhost:8080/api/add-fawj', data)
 
-            .then(res => {
-                fetchMyFawj();
-            })
+        .then(res => {
 
-            .catch(err => {
-                setError(err)
-            })
+            if (res.data.message === 'success') {
+                setStatusTwo("تمت العملية بنجاح")
+                fetchMyFawj();
+            }
+            else {
+                setErrorTwo("لم تتم العملية!")
+            }
+        })
+
+        .catch(err => {
+            setErrorTwo("لم تتم العملية!")
+        })
 
     }
-    // const onSubmitSquad = (e) => {
-    //     e.preventDefault();
 
-    //     let data = {
-    //         name: Squad,
-    //         fawj: selectfwj
-    //     }
-    //     axios.post('http://localhost:8080/api/add-squad', data)
-
-    //         .then(res => {
-    //             fetchMySquad();
-    //         })
-
-    //         .catch(err => {
-    //             setError(err)
-    //         })
-
-    // }
     const onDelete = (e) => {
         // setIsDelete(true)
         // let id = idDelete;
@@ -158,24 +176,16 @@ const Add = () => {
     const accordionOne = (e) => {
         setOpen(!open)
         setOpenTwo(false)
-        setOpenThree(false)
         fetchMyMoufawad();
 
     }
     const accordionTwo = (e) => {
         setOpenTwo(!openTwo)
         setOpen(false)
-        setOpenThree(false)
         fetchMyFawj();
 
     }
-    const accordionThree = (e) => {
-        setOpenThree(!openThree)
-        setOpenTwo(false)
-        setOpen(false)
-        // fetchMySquad();
 
-    }
     return (
         <div className="info-add">
             <div className="Header">
@@ -192,11 +202,17 @@ const Add = () => {
             <Collapse id="collapse" in={open}>
                 <div className="row p-0 m-0">
                     <div className="col-md-8 p-2">
-                        {moufawadiyeh.map((mfd, index) => {
-                            return (
-                                <span className="span-name">{mfd.name} <span onClick={() => handleShow(mfd._id, "mfd")} className='span-delete'>x</span> </span>
-                            )
-                        })}
+                        <span className='error '>{Server}</span>
+
+                        {!moufawadiyeh.length ?
+                            <span className='error mx-3'>لا يوجد معلومات للعرض </span>
+                            :
+                            moufawadiyeh.map((mfd, index) => {
+                                return (
+                                    <span className="span-name">{mfd.name} <span onClick={() => handleShow(mfd._id, "mfd")} className='span-delete'>x</span> </span>
+                                )
+                            })
+                        }
 
                     </div>
                     <div className="col-md-4 pt-md-3">
@@ -208,7 +224,8 @@ const Add = () => {
                                     <FontAwesomeIcon style={{ color: "green" }} icon={faPlus} />
 
                                 </button>
-
+                                <span className='error '>{Error}</span>
+                                <span className='success '>{Status}</span>
                             </div>
                         </form>
 
@@ -222,11 +239,18 @@ const Add = () => {
             <Collapse id="collapse" in={openTwo}>
                 <div className="row p-0 m-0">
                     <div className="col-md-8 p-2">
-                        {fawj.map((fwj, index) => {
-                            return (
-                                <span className="span-name">{fwj.name} <span onClick={() => handleShow(fwj._id, "fwj")} className='span-delete'>x</span> </span>
-                            )
-                        })}
+                        <span className='error '>{Server}</span>
+
+                        {!fawj.length ?
+                            <span className='error mx-3'>لا يوجد معلومات للعرض </span>
+                            :
+
+                            fawj.map((fwj, index) => {
+                                return (
+                                    <span className="span-name">{fwj.name} <span onClick={() => handleShow(fwj._id, "fwj")} className='span-delete'>x</span> </span>
+                                )
+                            })
+                        }
 
                     </div>
                     <div className="col -4 p-2">
@@ -239,7 +263,11 @@ const Add = () => {
                                 </button> :
                                     <button type="submit" >
                                         <FontAwesomeIcon style={{ color: "green" }} icon={faPlus} />
-                                    </button>}
+                                    </button>
+
+                                }
+                                <span className='error d-block'>{ErrorTwo}</span>
+                                <span className='success d-block '>{StatusTwo}</span>
                             </div>
                             <div className="mb-md-3 mx-md-4">
                                 <label className="form-label">حدد المفوضية</label>
@@ -250,7 +278,7 @@ const Add = () => {
                                             <option selected value={mfd._id}>{mfd?.name}</option>
                                         )
                                     })}
-                                <option disabled={true} value="" selected >اختر المفوضية</option>
+                                    <option disabled={true} value="" selected >اختر المفوضية</option>
 
                                 </select>
                             </div>
@@ -260,22 +288,7 @@ const Add = () => {
                     </div>
                 </div>
             </Collapse>
-            {/* <Button className="add-button" onClick={() => accordionThree()}>
-                الفرق في كشافة الإيمان
-            </Button>
-            <Collapse id="collapse" in={openThree}>
-                <div className="row p-0 m-0">
-                    <div className="col-md-8 p-2">
-                        {squad.map((sqd, index) => {
-                            return (
-                                <span className="span-name">{sqd.name} <span onClick={() => handleShow(sqd._id, "sqd")} className='span-delete'>x</span></span>
-                            )
-                        })}
 
-                    </div>
-
-                </div>
-            </Collapse> */}
 
             <div className="footer">
                 <h4 className="text-center">جمعية كشافة الإيمان الإسلامية</h4>

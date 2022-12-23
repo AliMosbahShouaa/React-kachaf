@@ -115,7 +115,6 @@ class Kadeh extends Component {
       })
   }
   render() {
-    console.log(this.state.kadeh)
     const kadehleader = this.state.kadeh.filter((kadeh) => {
       return kadeh.Position === "leader"
     })
@@ -186,7 +185,7 @@ class Kadeh extends Component {
                             <tr>
                               <th ><img className=" img-kadeh" src={`http://localhost:8080/` + kadeh.file.split('\\')[1]} /></th>
                               <th scope="row">{kadeh.Name}</th>
-                              <th scope="row">{kadeh.fawj.name}</th>
+                              <th scope="row">{kadeh.fawj?.name}</th>
                               <th style={{ cursor: "pointer" }} onClick={() => this.setId(kadeh._id)} scope="row" ><FontAwesomeIcon icon={faQuestion} /></th>
                               <th onClick={() => this.handleShow(kadeh._id)} className="delete"><FontAwesomeIcon icon={faTrash} /></th>
                             </tr>
@@ -228,7 +227,7 @@ class Kadeh extends Component {
                               <th ><img className=" img-kadeh" src={`http://localhost:8080/` + kadeh.file.split('\\')[1]} /></th>
 
                               <th scope="row">{kadeh.Name}</th>
-                              <th scope="row">{kadeh.fawj.name}</th>
+                              <th scope="row">{kadeh.fawj?.name}</th>
                               <th style={{ cursor: "pointer" }} onClick={() => this.setId(kadeh._id)} scope="row" ><FontAwesomeIcon icon={faQuestion} /></th>
                               <th onClick={() => this.handleShow(kadeh._id)} className="delete"><FontAwesomeIcon icon={faTrash} /></th>
                             </tr>
@@ -270,7 +269,7 @@ class Kadeh extends Component {
                             <tr>
                               <th ><img className=" img-kadeh" src={`http://localhost:8080/` + kadeh.file.split('\\')[1]} /></th>
                               <th scope="row">{kadeh.Name}</th>
-                              <th scope="row">{kadeh.fawj.name}</th>
+                              <th scope="row">{kadeh.fawj?.name}</th>
                               <th style={{ cursor: "pointer" }} onClick={() => this.setId(kadeh._id)} scope="row" ><FontAwesomeIcon icon={faQuestion} /></th>
                               <th onClick={() => this.handleShow(kadeh._id)} className="delete"><FontAwesomeIcon icon={faTrash} /></th>
                             </tr>
@@ -309,7 +308,7 @@ class Kadeh extends Component {
                             <tr>
                               <th ><img className=" img-kadeh" src={`http://localhost:8080/` + kadeh.file.split('\\')[1]} /></th>
                               <th scope="row">{kadeh.Name}</th>
-                              <th scope="row">{kadeh.fawj.name}</th>
+                              <th scope="row">{kadeh.fawj?.name}</th>
                               <th style={{ cursor: "pointer" }} onClick={() => this.setId(kadeh._id)} scope="row" ><FontAwesomeIcon icon={faQuestion} /></th>
                               <th onClick={() => this.handleShow(kadeh._id)} className="delete"><FontAwesomeIcon icon={faTrash} /></th>
                             </tr>

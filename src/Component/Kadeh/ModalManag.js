@@ -26,7 +26,7 @@ const ModalManag = (props) => {
   const [MotherWork, setMotherWork] = useState('');
   const [MotherBloodType, setMotherBloodType] = useState('');
   const [Avatar, setAvatar] = useState(null);
-  const [Position, setPosition] = useState('leader');
+  const [Position, setPosition] = useState('');
   const [Cloth, setCloth] = useState('');
 
   const [Fwj, setFwj] = useState('');
@@ -105,65 +105,64 @@ const ModalManag = (props) => {
     e.preventDefault();
     setLoading(true)
     setError('')
-    if (!Fwj || !Moufawadiyeh) {
-      setError("قم بتحديد الفوج / المفوضية");
-      setLoading(false)
-    }
-    else {
-      let timer = null
-      timer = setTimeout(() => {
+
+    let timer = null
+    timer = setTimeout(() => {
 
 
-        const formData = new FormData();
-        formData.append('Position', Position);
-        formData.append('Name', Name);
-        formData.append('Email', Email);
-        formData.append('Password', Password);
-        formData.append('Date', Date);
-        formData.append('BloodType', BloodType);
-        formData.append('Number', Number);
-        formData.append('PlaceBirth', PlaceBirth);
-        formData.append('Address', Address);
-        formData.append('NbOfFamily', NbOfFamily);
-        formData.append('AddressType', AddressType);
-        formData.append('CurrentEducation', CurrentEducation);
-        formData.append('Hobbies', Hobbies);
-        formData.append('Insurance', Insurance);
-        formData.append('Illness', Illness);
-        formData.append('FatherName', FatherName);
-        formData.append('FatherWork', FatherWork);
-        formData.append('FatherBloodType', FatherBloodType);
-        formData.append('MotherName', MotherName);
-        formData.append('MotherWork', MotherWork);
-        formData.append('MotherBloodType', MotherBloodType);
-        formData.append('moufawadiyeh', Moufawadiyeh);
+      const formData = new FormData();
+      formData.append('Position', Position);
+      formData.append('Name', Name);
+      formData.append('Email', Email);
+      formData.append('Password', Password);
+      formData.append('Date', Date);
+      formData.append('BloodType', BloodType);
+      formData.append('Number', Number);
+      formData.append('PlaceBirth', PlaceBirth);
+      formData.append('Address', Address);
+      formData.append('NbOfFamily', NbOfFamily);
+      formData.append('AddressType', AddressType);
+      formData.append('CurrentEducation', CurrentEducation);
+      formData.append('Hobbies', Hobbies);
+      formData.append('Insurance', Insurance);
+      formData.append('Illness', Illness);
+      formData.append('FatherName', FatherName);
+      formData.append('FatherWork', FatherWork);
+      formData.append('FatherBloodType', FatherBloodType);
+      formData.append('MotherName', MotherName);
+      formData.append('MotherWork', MotherWork);
+      formData.append('MotherBloodType', MotherBloodType);
+      formData.append('moufawadiyeh', Moufawadiyeh);
+      formData.append('file', Avatar);
+      formData.append('Cloth', Cloth);
+      formData.append('isAdmin', true);
+      if (Fwj !== "") {
         formData.append('fawj', Fwj);
+      }
+      if (Squad !== "") {
         formData.append('squad', Squad);
-        formData.append('file', Avatar);
-        formData.append('Cloth', Cloth);
-        formData.append('isAdmin', true);
+      }
+      axios({
+        method: "post",
+        url: `http://localhost:8080/api/register`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
 
-        axios({
-          method: "post",
-          url: `http://localhost:8080/api/register`,
-          data: formData,
-          headers: { "Content-Type": "multipart/form-data" },
+        .then(res => {
+          props.getInfo();
+          handleClose();
+          setLoading(false)
+
         })
 
-          .then(res => {
-            props.getInfo();
-            handleClose();
-            setLoading(false)
+        .catch(err => {
+          setError("لم تتم العملية راجع المدخلات")
+          setLoading(false)
+        })
+    }, 1000);
 
-          })
 
-          .catch(err => {
-            setError(err.response.data.message)
-            setLoading(false)
-          })
-      }, 1000);
-
-    }
   }
 
   return (
@@ -309,58 +308,80 @@ const ModalManag = (props) => {
 
                 </select>
               </div>
-              <div className="mb-3 mx-0 col-md-4">
-                <label className="form-label">الفوج</label>
 
-              {!Moufawadiyeh?
-                <select disabled value={Fwj} onChange={handleFwj} class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  {fawj.map((fwj, index) => {
-                    return (
 
-                      <option value={fwj._id}>{fwj.name}</option>
-                    )
-                  })}
-                  <option value="" selected disabled>اختيار </option>
 
-                </select> :
-                  <select onClick={onClickFawj} value={Fwj} onChange={handleFwj} class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  {fawj.map((fwj, index) => {
-                    return (
 
-                      <option value={fwj._id}>{fwj.name}</option>
-                    )
-                  })}
-                  <option value="" selected disabled>اختيار </option>
+              {Position === "moufawad" ?
+                <div className="mb-3 mx-0 col-md-4">
+                  <span></span>
+                </div> :
+                <div className="mb-3 mx-0 col-md-4">
+                  <label className="form-label">الفوج</label>
 
-                </select>}
+                  {!Moufawadiyeh ?
+                    <select disabled value={Fwj} onChange={handleFwj} class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      {fawj.map((fwj, index) => {
+                        return (
 
-              </div>
-              <div className="mb-3 mx-0 col-md-4">
-                <label className="form-label">الفرقة</label>
+                          <option value={fwj._id}>{fwj.name}</option>
+                        )
+                      })}
+                      <option value="" selected disabled>اختيار </option>
 
-                {!Fwj ?
-                  <select disabled value={Squad} onChange={handleSquad} class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    {squad.map((squad, index) => {
-                      return (
+                    </select> :
+                    <select onClick={onClickFawj} value={Fwj} onChange={handleFwj} class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      {fawj.map((fwj, index) => {
+                        return (
 
-                        <option value={squad._id}>{squad.name}</option>
-                      )
-                    })}
-                    <option value="" selected disabled>اختيار </option>
+                          <option value={fwj._id}>{fwj.name}</option>
+                        )
+                      })}
+                      <option value="" selected disabled>اختيار </option>
 
-                  </select> :
-                  <select onClick={onClickSquad} value={Squad} onChange={handleSquad} class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    {squad.map((squad, index) => {
-                      return (
+                    </select>}
 
-                        <option value={squad._id}>{squad.name}</option>
-                      )
-                    })}
-                    <option value="" selected disabled>اختيار </option>
+                </div>}
 
-                  </select>}
 
-              </div>
+
+
+
+
+              {Position === "amid" || Position === "moufawad" ?
+                <div className="mb-3 mx-0 col-md-4">
+                  <span></span>
+
+                </div> :
+                <div className="mb-3 mx-0 col-md-4">
+                  <label className="form-label">الفرقة</label>
+
+                  {!Fwj ?
+                    <select disabled value={Squad} onChange={handleSquad} class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      {squad.map((squad, index) => {
+                        return (
+
+                          <option value={squad._id}>{squad.name}</option>
+                        )
+                      })}
+                      <option value="" selected disabled>اختيار </option>
+
+                    </select> :
+                    <select onClick={onClickSquad} value={Squad} onChange={handleSquad} class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      {squad.map((squad, index) => {
+                        return (
+
+                          <option value={squad._id}>{squad.name}</option>
+                        )
+                      })}
+                      <option value="" selected disabled>اختيار </option>
+
+                    </select>}
+
+                </div>}
+
+
+
             </div>
 
             <button class="btn btn-success" type="submit">+ إضافة</button>
@@ -368,6 +389,9 @@ const ModalManag = (props) => {
               <span class="visually-hidden">Loading...</span>
             </div>) : <div>            <h4 className="error text-center py-2">{error}</h4>
             </div>}
+
+
+
 
           </form>
         </Modal.Body>
