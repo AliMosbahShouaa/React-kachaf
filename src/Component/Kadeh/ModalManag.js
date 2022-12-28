@@ -21,8 +21,10 @@ const ModalManag = (props) => {
   const [Illness, setIllness] = useState('');
   const [FatherName, setFatherName] = useState('');
   const [FatherWork, setFatherWork] = useState('');
+  const [FatherNumber, setFatherNumber] = useState('');
   const [FatherBloodType, setFatherBloodType] = useState('');
   const [MotherName, setMotherName] = useState('');
+  const [MotherNumber, setMotherNumber] = useState('');
   const [MotherWork, setMotherWork] = useState('');
   const [MotherBloodType, setMotherBloodType] = useState('');
   const [Avatar, setAvatar] = useState(null);
@@ -60,11 +62,13 @@ const ModalManag = (props) => {
   const handleInsurance = (e) => setInsurance(e.target.value);
   const handleIllnes = (e) => setIllness(e.target.value);
   const handleFatherName = (e) => setFatherName(e.target.value);
+  const handleFatherNumber = (e) => setFatherNumber(e.target.value);
   const handleFatherWork = (e) => setFatherWork(e.target.value);
   const handleFatherBloodType = (e) => setFatherBloodType(e.target.value);
   const handleMotherName = (e) => setMotherName(e.target.value);
   const handleMotherWork = (e) => setMotherWork(e.target.value);
   const handleMotherBloodType = (e) => setMotherBloodType(e.target.value);
+  const handleMotherNumber = (e) => setMotherNumber(e.target.value);
   const handleAvatar = (e) => setAvatar(e.target.files[0]);
   const handlePosition = (e) => setPosition(e.target.value);
   const handleCloth = (e) => setCloth(e.target.value);
@@ -128,9 +132,11 @@ const ModalManag = (props) => {
       formData.append('Illness', Illness);
       formData.append('FatherName', FatherName);
       formData.append('FatherWork', FatherWork);
+      formData.append('FatherWork', FatherNumber);
       formData.append('FatherBloodType', FatherBloodType);
       formData.append('MotherName', MotherName);
       formData.append('MotherWork', MotherWork);
+      formData.append('MotherWork', MotherNumber);
       formData.append('MotherBloodType', MotherBloodType);
       formData.append('moufawadiyeh', Moufawadiyeh);
       formData.append('file', Avatar);
@@ -248,6 +254,10 @@ const ModalManag = (props) => {
                 <input onChange={handleFatherName} type="text" placeholder='الإسم الكامل' required className="form-control" />
               </div>
               <div className="mb-3 mx-0 col-md-4">
+                <label className="form-label">رقم هاتف - الأب</label>
+                <input onChange={handleFatherNumber} type="text" placeholder='الإسم الكامل' required className="form-control" />
+              </div>
+              <div className="mb-3 mx-0 col-md-4">
                 <label className="form-label">زمرة دم - الأب</label>
                 <input onChange={handleFatherBloodType} type="text" placeholder='O+' required className="form-control" />
               </div>
@@ -259,6 +269,10 @@ const ModalManag = (props) => {
               <div className="mb-3 mx-0 col-md-4">
                 <label className="form-label">إسم الأم</label>
                 <input onChange={handleMotherName} type="text" placeholder='الإسم الكامل' required className="form-control" />
+              </div>
+              <div className="mb-3 mx-0 col-md-4">
+                <label className="form-label">رقم هاتف - الأم</label>
+                <input onChange={handleMotherNumber} type="text" placeholder='الإسم الكامل' required className="form-control" />
               </div>
               <div className="mb-3 mx-0 col-md-4">
                 <label className="form-label">زمرة دم - الأم</label>
